@@ -1,0 +1,110 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyP2ZOZxX7SLwiI4aAs0Goin",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/lamaya698/PROGCOM-A/blob/main/CARRERA%20MEJORADA%20\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 1,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "C36fA5wAw-zY",
+        "outputId": "331e26ac-b9a1-4df8-a2da-1d874ec8efbe"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "== Registro de Paciente ==\n",
+            "Nombre completo: andres \n",
+            "Edad: 21\n",
+            "Género (M/F/Otro): m\n",
+            "\n",
+            "== Constantes Fisiológicas ==\n",
+            "Frecuencia cardíaca (lpm): 37\n",
+            "Presión arterial sistólica (mmHg): 37\n",
+            "Presión arterial diastólica (mmHg): 38\n",
+            "Temperatura corporal (°C): 19\n",
+            "Frecuencia respiratoria (rpm): 19\n",
+            "\n",
+            "✅ Datos guardados exitosamente en: Registros_Pacientes/andres.txt\n"
+          ]
+        }
+      ],
+      "source": [
+        "import os\n",
+        "\n",
+        "# Crear carpeta para almacenar los registros\n",
+        "carpeta = \"Registros_Pacientes\"\n",
+        "os.makedirs(carpeta, exist_ok=True)\n",
+        "\n",
+        "# Función para capturar los datos\n",
+        "def registrar_paciente():\n",
+        "    print(\"== Registro de Paciente ==\")\n",
+        "\n",
+        "    # Datos personales\n",
+        "    nombre = input(\"Nombre completo: \").strip()\n",
+        "    edad = input(\"Edad: \").strip()\n",
+        "    genero = input(\"Género (M/F/Otro): \").strip()\n",
+        "\n",
+        "    # Constantes fisiológicas\n",
+        "    print(\"\\n== Constantes Fisiológicas ==\")\n",
+        "    frecuencia_cardiaca = input(\"Frecuencia cardíaca (lpm): \").strip()\n",
+        "    presion_sistolica = input(\"Presión arterial sistólica (mmHg): \").strip()\n",
+        "    presion_diastolica = input(\"Presión arterial diastólica (mmHg): \").strip()\n",
+        "    temperatura = input(\"Temperatura corporal (°C): \").strip()\n",
+        "    frecuencia_respiratoria = input(\"Frecuencia respiratoria (rpm): \").strip()\n",
+        "\n",
+        "    # Crear contenido del archivo\n",
+        "    datos = f\"\"\"\n",
+        "    Nombre: {nombre}\n",
+        "    Edad: {edad}\n",
+        "    Género: {genero}\n",
+        "\n",
+        "    Frecuencia cardíaca: {frecuencia_cardiaca} lpm\n",
+        "    Presión arterial: {presion_sistolica}/{presion_diastolica} mmHg\n",
+        "    Temperatura corporal: {temperatura} °C\n",
+        "    Frecuencia respiratoria: {frecuencia_respiratoria} rpm\n",
+        "    \"\"\"\n",
+        "\n",
+        "    # Nombre del archivo (nombre sin espacios)\n",
+        "    nombre_archivo = os.path.join(carpeta, f\"{nombre.replace(' ', '_')}.txt\")\n",
+        "\n",
+        "    # Guardar archivo\n",
+        "    with open(nombre_archivo, \"w\") as f:\n",
+        "        f.write(datos.strip())\n",
+        "\n",
+        "    print(f\"\\n✅ Datos guardados exitosamente en: {nombre_archivo}\")\n",
+        "\n",
+        "# Ejecutar la función\n",
+        "registrar_paciente()\n"
+      ]
+    }
+  ]
+}
